@@ -53,6 +53,12 @@ public class EmployeeRunner {
         List<Integer> ageList= employeeList.stream().map(Employee::getAge).toList();
         System.out.println("====== Employee with min age=====");
         System.out.println(ageList.stream().mapToInt(x -> x).summaryStatistics().getMin());
+        int minAge=ageList.stream().mapToInt(x -> x).summaryStatistics().getMin();
+        employeeList.stream()
+                .filter(x -> x.getAge()==minAge)
+                .map(emp->emp.getEmpName())
+                .toList()
+                .forEach(System.out::println);
 
         System.out.println("====== Employee with max age=====");
         System.out.println(ageList.stream().mapToInt(x -> x).summaryStatistics().getMax());
